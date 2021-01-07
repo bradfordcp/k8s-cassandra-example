@@ -18,8 +18,6 @@
 ```console
 # Create the Kubernetes cluster
 $ k3d cluster create
-helm version
-version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb4fe05d143688", GitTreeState:"clean", GoVersion:"go1.13.12"}
 
 $ kubectl cluster-info
 Kubernetes control plane is running at https://0.0.0.0:40227
@@ -33,6 +31,7 @@ $ helm repo add datastax https://datastax.github.io/charts
 "datastax" has been added to your repositories
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 "prometheus-community" has been added to your repositories
+$ helm repo update
 
 # Install Prometheus & Grafana
 $ helm install monitoring prometheus-community/kube-prometheus-stack -f monitoring.values.yaml
