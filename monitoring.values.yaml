@@ -1,0 +1,6 @@
+---
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchLabels:
+        cassandra.datastax.com/cluster: cluster1
