@@ -64,13 +64,3 @@ cassandradatacenter.cassandra.datastax.com/dc1 created
 $ kubectl create -f dashboards.configmaps.yaml
 $ kubectl apply -f cluster.servicemonitor.yaml
 ```
-
-## Regenerating dashboard configmaps
-
-```console
-$ git submodule update
-$ jb install
-$ cd kube-prometheus
-$ jb --jsonnetpkg-home=../vendor install
-$ cd ..
-```
