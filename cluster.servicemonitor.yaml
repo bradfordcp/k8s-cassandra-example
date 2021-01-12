@@ -6,8 +6,19 @@ metadata:
     cassandra.datastax.com/cluster: cluster1
   name: mcac-cluster
 spec:
+  selector:
+    matchLabels:
+      cassandra.datastax.com/cluster: cluster1
+      cassandra.datastax.com/prom-metrics: "true"
+  targetLabels:
+    - cassandra.datastax.com/cluster
+    - cassandra.datastax.com/datacenter
   endpoints:
-  - interval: 15s
+  - path: /metrics
+    scheme: http
+    scrapeTimeout: 15s
+    targetPort: 9103
+    interval: 15s
     metricRelabelings:
     - action: drop
       regex: .*rate_(mean|1m|5m|15m)
@@ -286,14 +297,5 @@ spec:
       targetLabel: __name__
     - action: labeldrop
       regex: prom_name
-    path: /metrics
-    scheme: http
-    scrapeTimeout: 15s
-    targetPort: 9103
-  selector:
-    matchLabels:
-      cassandra.datastax.com/cluster: cluster1
-      cassandra.datastax.com/prom-metrics: "true"
-  targetLabels:
-  - cassandra.datastax.com/cluster
-  - cassandra.datastax.com/datacenter
+    
+  
