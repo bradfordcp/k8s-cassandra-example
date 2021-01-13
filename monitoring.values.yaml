@@ -1,9 +1,6 @@
 ---
 prometheus:
   prometheusSpec:
-    serviceMonitorSelector:
-      matchLabels:
-        cassandra.datastax.com/cluster: cluster1
     externalUrl: http://localhost:9090/prometheus
     routePrefix: /prometheus
   ingress:
@@ -15,6 +12,8 @@ grafana:
   ingress:
     enabled: true
     path: /grafana
+  plugins:
+    - grafana-polystat-panel
   grafana.ini:
     server:
       root_url: http://localhost:3000/grafana

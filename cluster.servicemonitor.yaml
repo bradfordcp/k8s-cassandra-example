@@ -3,7 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    cassandra.datastax.com/cluster: cluster1
+    release: monitoring
   name: mcac-cluster
 spec:
   selector:
